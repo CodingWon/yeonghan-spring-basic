@@ -157,3 +157,35 @@ public class MemberServiceImpl implements  MemberService{
 
 ```
 
+## 1.4 주문과 할인 도메인 설계
+
+- 주문 도메인 협력, 역할, 책임
+
+  1. 주문생성 : **클라이언트**는 **주문 서비스**에 주문 생성을 요청
+  2. 회원 조회 : 할인을 위해서는 회원 등급이 필요하다. 그래서 **주문 서비서**는 **회원 저장소**에서 회원을 조회
+  3. 할인 적용 : **주문 서비스**는 회원 등급에 따른 할인 여부를 **할인 정책**에 위임
+  4. 주문 결과 반환 : **주문 서비스**는 할인 결과를 포함한 주문 결과를 반환
+
+  ![20240817123058](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240817123058.png)
+
+- 주문 도메인 전체
+
+  - 역할을 분리해서 자유롭게 구현 객체를 조립할 수 있게 설계
+  - 회원 저장소, 할인 정책을 유연하게 변경할 수 있다.
+
+  ![20240817133600](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240817133600.png)
+
+- 주문 도메인 클래스 다이어그램
+
+  ![20240817134040](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240817134040.png)
+
+- 주문 도메인 객체 다이어그램 -1 ![20240817133908](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240817133908.png)
+
+- 주문 도메인 객체 다이어그램 -2
+
+  ![20240817134223](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240817134223.png)
+
+```
+✅ 협력 관계를 그대로 유지하고 기능만 변경할 수 있다.
+```
+
