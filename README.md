@@ -49,7 +49,7 @@
 
 ## 1.3 회원 도메인 개발
 
-### 동시성 이슈
+### # 동시성 이슈
 
 > 여러 쓰레드가 동시에 같은 자원에 접근할 때 발생하는 문제를 말한다.
 >
@@ -107,23 +107,53 @@
 >
 >   ```
 >    import java.util.concurrent.ConcurrentHashMap;
->    
+>      
 >    public class Main {
 >        public static void main(String[] args) {
 >               ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 >               map.put("A", 1);
 >               map.put("B", 2);
 >               map.put("C", 3);
->   
+>     
 >               System.out.println("Map size: " + map.size());
 >               int valueA = map.get("A");
 >               System.out.println("Value of A: " + valueA);
->   
+>     
 >               map.remove("B");
 >               System.out.println("Map size: " + map.size());
 >           }
 >   }
 >   ```
 >
->   
+
+### # 의존성 이슈
+
+```
+package hello.core.member;
+
+/*
+ *  회원 도메인 설계의 문제점
+ *   - 다른 저장소로 변경할 때 OCP 원칙을 잘 준수 할까?
+ *   - DIP를 잘 지키고 있을 까?
+ *   - 의존 관계가 인터페이스 뿐만 아니라 구현 까지 모두 의존하는 문제점이 있음
+ *
+ *   - 현재 추상화에도 의존하고 구체화 에도 의존하고 있다.
+ * */
+
+public class MemberServiceImpl implements  MemberService{
+
+    private final MemberRepository memberRepository = new MemoryMemberRepositroy();
+
+    @Override
+    public void join(Member member) {
+        memberRepository.save(member);
+    }
+
+    @Override
+    public Member findMember(Long memberId) {
+        return memberRepository.findById(memberId);
+    }
+}
+
+```
 
