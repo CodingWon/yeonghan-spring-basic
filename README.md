@@ -20,4 +20,29 @@
 
     > **이슈 사항 : 할인 정책이 언제든 변경 될 수 있다.**
 
-  
+## 1.2 회원 도메인 설계
+
+- 회원 도메인 협력 관계
+
+  - 기획자도 볼 수 있는 그림
+
+  - 회원  저장소가 미확정이어서 인터페이스로 분리
+
+    a. 메모리 저장소
+
+    b. db 저장소
+
+    c. 외부 시스템 연동 회원 저장소
+
+  ![스크린샷 2024-08-17 104303](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/스크린샷 2024-08-17 104303.png)
+
+- 회원 클래스 다이어 그램
+
+  - 개발자가 구체화한 그림
+  - 동적으로 구체화된 객체가 정해지므로 클래스 다이어그램 만으로는 판단하기 힘듬
+
+  ![스크린샷 2024-08-17 104642](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/스크린샷 2024-08-17 104642.png)
+
+- 회원 객체 다이어그램
+  - 실제 서버가 떴을 때 의존관계 표현
+  - 객체간에 참조 관계 표현(의존관계)![스크린샷 2024-08-17 104815](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/스크린샷 2024-08-17 104815.png)
