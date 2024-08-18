@@ -305,4 +305,8 @@ public class MemberServiceImpl implements  MemberService{
   
   ```
 
-  
+## 2.6 새로운 구조와 할인 정책 적용
+
+- 사용 , 구성의 분리
+  - AppConfig 만 변경 하여도 할인 정책을 변경할 수 있다.
+- ![20240818194124](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818194124.png)
