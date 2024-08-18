@@ -310,3 +310,63 @@ public class MemberServiceImpl implements  MemberService{
 - 사용 , 구성의 분리
   - AppConfig 만 변경 하여도 할인 정책을 변경할 수 있다.
 - ![20240818194124](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818194124.png)
+
+## 2.7 좋은 객체 지향 설계의 5가지 원칙의 적용
+
+### # SRP 단일 책임 원칙
+
+- 구현 객체를 생성하고 연결하는 책임은 AppConfig가 담당
+- 클라이언트 객체는 실행하는 책임만 담당
+
+### # DIP 의존관계 역전 원칙
+
+- 프로그래머는 추상화에 의존해야지, 구체화에 의존하면 안된다.
+- AppConfig 가 의존성 주입을 해줘서 DIP 원칙을 지킬 수 있다.
+
+### # OCP
+
+- 소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야 한다.
+- 애플리케이션을 사용영역과 구성영역으로 나눔
+- 클라이언트 코드는 변경 하지 않고 새롭게 기능을 확장 할 수 있다.
+
+### # 제어의 역전 IoC(Inversion of Control)
+
+- 프로그램의 제어 흐름을 직접 제어하는 것이 아니라 외부에서 관리하는 것을 말한다.
+- AppConfig 에 의해 흐름이 제어 된다.
+
+> 프레임워크 vs 라이브러리
+>
+> - 프레임 워크
+>   - 내가 작성한 코드를 제어하고, 대신 실행한다.(JUnit)
+> - 라이브러리
+>   - 내가 작성한 코드가 직접 제어의 흐름을 담당한다.
+
+### # 의존 관계 주입 DI(Dependency Injection)
+
+- `OrderServiceImpl `  는 `DiscountPolicy`인터페이스에 의존한다. 
+
+- 의존관계는 **정적인 클래스 의존 관계와, 실행 시점에 결정되는 동적인 객체(인스턴스) 의존 관계**를 분리해서 생각해야 한다.
+
+- 정적인 클래스 의존 관계
+
+  - 실제 어떤 구현 객체가 사용될지는 모른다.  
+
+    ![20240818201112](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818201112.png)
+
+- 동적인 객체 인스턴스 의존 관계
+
+  - 런타임 시
+
+    - 외부에서 실제 구현 객체를 생성하고 클라이언트에 전달
+    - 클라이언트와 서버의 실제 의존 관계가 연결되는 것을 의존성 주입이라고 한다.
+
+  - 정적인 클래스 의존 관계를 손대지 않고, 동적인 객체 인스턴스 의존관계를 쉽게 변경할 수 있다.
+
+    ![20240818201545](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818201545.png)
+
+### # Ioc 컨테이너, DI 컨테이너
+
+- AppConfig
+  - 객체를 생성, 관리, 의존관계를 연결 해주는 것
+  - 의존관계 주입에 초점을 맞추어 DI 컨테이너라고 부른다.
+  - 어샘블러(조립) , 오브젝트 팩토리 .... 등등 으로 불림
