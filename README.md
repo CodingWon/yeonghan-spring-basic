@@ -231,3 +231,24 @@ public class MemberServiceImpl implements  MemberService{
   - 누군가가 클라이언트인 `OrderServiceImpl` 에 `DiscountPolicy` 의 구현 객체를 대
     신 생성하고 주입해주어야 한다.  
 
+## 2.4 관심사 분리
+
+- 관심사 분리
+
+  - 공연의 예
+    - 배우는 배우 역할에 충실해야한다.
+    - 배역은 공연기획자가 정한다.
+
+- AppConfig 등장
+
+  - AppConfig 가 애플리케이션의 실제 동작에 필요한 구현 객체를 생성 한다.
+  - 생성한 객체를 인스턴스의 참조(레퍼런스)를 생성자를 통해서 주입(연결) 해준다.
+
+  - 각 구현객체는 실행에만 집중할 수 있다.
+
+  - 클래스 다이어 그램
+
+    - DIP 를 만족시킨다.
+    - 관심사 분리 : 객체를 생성하고 연결하는 역할과 실행하는 역할이 분리되었다.
+
+    ![20240818190136](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818190136.png)

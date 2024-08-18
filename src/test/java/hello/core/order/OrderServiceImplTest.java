@@ -1,13 +1,21 @@
 package hello.core.order;
 
+import hello.core.AppConfig;
 import hello.core.member.*;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 class OrderServiceImplTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService ;
+    OrderService orderService;
 
+    @BeforeEach
+    void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
     @Test
     void createOrder(){
         Long memberId = 1L;

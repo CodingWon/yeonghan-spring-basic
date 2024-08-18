@@ -10,8 +10,12 @@ package hello.core.member;
  * */
 
 public class MemberServiceImpl implements  MemberService{
+    // DIP 를 지키고 있다
+    private final MemberRepository memberRepository ;
 
-    private final MemberRepository memberRepository = new MemoryMemberRepositroy();
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public void join(Member member) {
