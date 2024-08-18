@@ -195,4 +195,39 @@ public class MemberServiceImpl implements  MemberService{
 
 ## 2.1 새로운 할인 정책을 개발
 
-- 정률 할인 정책 추가
+- RateDiscountPolicy 추가![20240818181546](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818181546.png)
+
+  
+
+## 2.2 새로운 할인 정책 적용과 문제점
+
+- 문제점
+
+  ```java
+  public class OrderServiceImpl implements OrderService {
+  
+      private final MemberRepository memberRepository = new MemoryMemberRepositroy();
+      //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+       private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 할인 정책 변경
+  	...
+  }
+  ```
+
+  - DIP 위반
+
+    - 추상(인터페이스) 뿐만 아니라 **구체(구현) 클래스에도 의존**하고 있다
+
+      ![20240818183121](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818183121.png)
+
+  - OCP 위반
+
+    - 코드는 기능을 확장해서 변경하면, 클라이언트 코드에 영향을 준다
+
+      ![20240818183232](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818183232.png)
+
+## 2.3 해결방법
+
+- 해결방법
+  - 누군가가 클라이언트인 `OrderServiceImpl` 에 `DiscountPolicy` 의 구현 객체를 대
+    신 생성하고 주입해주어야 한다.  
+
