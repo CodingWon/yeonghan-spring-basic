@@ -1,4 +1,4 @@
-# 1. 스프링 핵심 원리 이해 - 예제 만들기
+# 1. 스프링 핵심 원리 이해 1 - 예제 만들기
 
 ## 1.1 비즈니스 요구사항과 설계
 
@@ -107,18 +107,18 @@
 >
 >   ```
 >    import java.util.concurrent.ConcurrentHashMap;
->      
+>        
 >    public class Main {
 >        public static void main(String[] args) {
 >               ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 >               map.put("A", 1);
 >               map.put("B", 2);
 >               map.put("C", 3);
->     
+>       
 >               System.out.println("Map size: " + map.size());
 >               int valueA = map.get("A");
 >               System.out.println("Value of A: " + valueA);
->     
+>       
 >               map.remove("B");
 >               System.out.println("Map size: " + map.size());
 >           }
@@ -189,3 +189,10 @@ public class MemberServiceImpl implements  MemberService{
 ✅ 협력 관계를 그대로 유지하고 기능만 변경할 수 있다.
 ```
 
+
+
+# 2. 스프링 핵심 원리 이해 2 - 객체지향 원리 적용
+
+## 2.1 새로운 할인 정책을 개발
+
+- 정률 할인 정책 추가
