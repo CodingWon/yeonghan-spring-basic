@@ -370,3 +370,15 @@ public class MemberServiceImpl implements  MemberService{
   - 객체를 생성, 관리, 의존관계를 연결 해주는 것
   - 의존관계 주입에 초점을 맞추어 DI 컨테이너라고 부른다.
   - 어샘블러(조립) , 오브젝트 팩토리 .... 등등 으로 불림
+
+## 2.8 스프링으로 전환하기  
+
+### # 스프링 컨테이너
+
+- `ApplicationContext` 를 스프링 컨테이너라 한다  
+- `@Configuration` 이 붙은 `AppConfig` 를 설정(구성) 정보로 사용한다.
+- `@Bean` 이라 적힌 메서드를 모두 호출해서 반환된 객체를 스프링 컨테이너에 등록  
+- `@Bean` 이 붙은 메서드의 명을 스프링 빈의 이름으로 사용한다 .
+- 스프링 빈은 `applicationContext.getBean()` 메서드를 사용 해서 찾을 수 있다.  
+- 스프링 컨테이너를 사용했을 때 장점 ?
+
