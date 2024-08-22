@@ -107,18 +107,18 @@
 >
 >   ```
 >    import java.util.concurrent.ConcurrentHashMap;
->        
+>          
 >    public class Main {
 >        public static void main(String[] args) {
 >               ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 >               map.put("A", 1);
 >               map.put("B", 2);
 >               map.put("C", 3);
->       
+>         
 >               System.out.println("Map size: " + map.size());
 >               int valueA = map.get("A");
 >               System.out.println("Value of A: " + valueA);
->       
+>         
 >               map.remove("B");
 >               System.out.println("Map size: " + map.size());
 >           }
@@ -382,3 +382,4 @@ public class MemberServiceImpl implements  MemberService{
 - 스프링 빈은 `applicationContext.getBean()` 메서드를 사용 해서 찾을 수 있다.  
 - 스프링 컨테이너를 사용했을 때 장점 ?
 
+![20240818201545](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818201545.png)
