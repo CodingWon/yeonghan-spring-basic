@@ -413,3 +413,5 @@ public class MemberServiceImpl implements  MemberService{
    - 동적인 의존 관계를 스프링이 연결시켜준다.
 
 ![20240822200203](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240822200203.png)
+
+## 4.2 컨테이너에 등록된 모든 빈 조회
