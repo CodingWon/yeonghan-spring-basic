@@ -107,18 +107,18 @@
 >
 >   ```
 >    import java.util.concurrent.ConcurrentHashMap;
->          
+>            
 >    public class Main {
 >        public static void main(String[] args) {
 >               ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 >               map.put("A", 1);
 >               map.put("B", 2);
 >               map.put("C", 3);
->         
+>           
 >               System.out.println("Map size: " + map.size());
 >               int valueA = map.get("A");
 >               System.out.println("Value of A: " + valueA);
->         
+>           
 >               map.remove("B");
 >               System.out.println("Map size: " + map.size());
 >           }
@@ -382,4 +382,34 @@ public class MemberServiceImpl implements  MemberService{
 - 스프링 빈은 `applicationContext.getBean()` 메서드를 사용 해서 찾을 수 있다.  
 - 스프링 컨테이너를 사용했을 때 장점 ?
 
-![20240818201545](https://raw.githubusercontent.com/CodingWon/yeonghan-spring-basic/master/imgs/20240818201545.png)
+# 4. 스프링 컨테이너와 스프링 빈
+
+## 4.1 스프링 컨테이너 생성
+
+- `ApplicationContext` 를 스프링 컨테이너라 한다  
+- `AnnotationConfigApplicationContext(AppConfig.class);`  는 구현체
+- `ApplicationContext` 는 인터페이스
+
+### # 스프링 컨테이너 생성 과정
+
+1. 스프링 컨테이너 생성
+   - `AppConfig.class`구성 정보 지정
+
+![20240822195559](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240822195559.png)
+
+2. 스프링 빈 등록
+
+   - `@Bean` 을 확인해서 호출 
+   - 메서드 이름을 기준으로 객체를 저장
+   - `@Bean(name="memberService2")` 직접 지정 가능
+
+   ![20240822195747](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240822195747.png)
+
+3. 스프링 빈 의존관계 설정 준비
+
+![20240822200114](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240822200114.png)
+
+4. 스프링 빈 의존관계 설정 - 완료
+   - 동적인 의존 관계를 스프링이 연결시켜준다.
+
+![20240822200203](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240822200203.png)
