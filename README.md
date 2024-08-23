@@ -521,3 +521,15 @@ public class MemberServiceImpl implements  MemberService{
   - 내부 속성을 변경하거나 초기화 하기 어렵다.
   - private 생성자로 자식 클래스를 만들기 어렵다.
   - 안티패턴으로 불리기도 한다.
+
+## 5.3 싱글톤 컨테이너
+
+- 싱글톤 패턴을 적용하지 않아도 객체 인스턴스를 싱글톤으로 관리한다.
+- 싱글톤 패턴을 위한 지저분한 코드 불필요
+- DIP, OCP, 테스트, private 생성자로 부터 자유롭게 싱글톤을 사용할 수 있다.
+- 싱글톤 컨테이너 적용 후
+  - 이미 만들어진 객체를 효율적으로 사용 할 수 있다.
+
+![20240823181218](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823181218.png)
+
+> 참고 : 스프링 기본은 싱글톤이지만, 요청할 때 마다 새로운 객체를 생성해서 반환하는 기능도 제공
