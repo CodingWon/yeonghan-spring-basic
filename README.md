@@ -437,3 +437,27 @@ public class MemberServiceImpl implements  MemberService{
 3. 특정 하위 타입으로 조회
 4. 부모 타입으로 모두 조회하기
 5. 부모 타입으로 모두 조회하기 - Object
+
+## 4.6 BeanFactory와 ApplicationContext  
+
+![20240823155532](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823155532.png)
+
+- BeanFactory
+
+  - 스프링 컨테이너의 최상의 인터페이스
+  - 스프링 빈을 관리하고 조회하는 역할 담당
+
+- ApplicationContext
+
+  - BeanFactory 기능을 모두 상속 받아서 제공
+  - 빈 관리 기능 이외의 부가기능을 물려 받았다.
+    - 메세지 소스를 활용한 국제화 기능
+      - 한국권 -> 한국어 / 영어권 -> 영어로 출력
+    - 환경변수
+      - 로컬, 개발, 운영등을 구분해서 처리
+    - 애플리케이션 이벤트
+      - 이벤트를 발행하고 구독하는 모델을 편리하게 지원
+    - 편리한 리소스 조회
+      - 파일, 클래스, 외부 등에서 외부 리소스를 편리하게 조회
+
+  ![20240823155816](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823155816.png)
