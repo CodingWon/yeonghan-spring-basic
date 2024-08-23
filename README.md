@@ -548,3 +548,16 @@ public class MemberServiceImpl implements  MemberService{
 - 상태를 유지할 경우 발생하는 문제점 예시
   - 필드를 공유할경유 A 고객의 값을 B의 고객이 바꿀 수 있다.
 - 스프링 빈은 항상 무상태(stateless)로 설계하자 !!
+
+## 5.5 @Configuration과 싱글톤  
+
+- 각각 다른 2개의 `MemoryMemberRepository` 가 생성되면서 싱글톤이 깨지는 것 처럼 보인다. 스프링
+  컨테이너는 이 문제를 어떻게 해결할까?  
+
+- 총 세번 호출 해야 하는데 테스트 결과 => **모두 1번만 호출된다.**  
+
+  1. 스프링 컨테이너가 스프링 빈에 등록하기 위해 @Bean이 붙어있는 `memberRepository()` 호출
+  2. memberService() 로직에서 `memberRepository()` 호출
+  3. orderService() 로직에서 `memberRepository()` 호출  
+
+  

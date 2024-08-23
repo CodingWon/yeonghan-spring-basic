@@ -18,16 +18,29 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    // 이러면 싱글톤이 깨지는게 아닐까 ??
+    // @Bean memberService -> new MemoryMemberRepositroy()
+    // @Bean orderService -> new MemoryMemberRepositroy();
+
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+
+    // call AppConfig.orderService
+    // call AppConfig.memberRepository
+
     // 역할 : memberService
     // 의존 : memberRepository
     @Bean   // 스프링 컨테이너 등록 된다.
-    public MemberService memberService (){
+    public MemberService memberService () {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());     // 생성자 주입
+
     }
 
     // 역할 : memberRepository
     @Bean   // 스프링 컨테이너 등록 된다.
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepositroy();
     }
 
@@ -35,8 +48,8 @@ public class AppConfig {
     // 의존 : memberRepository , discountPolicy
     @Bean   // 스프링 컨테이너 등록 된다.
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
-
     }
 
     // 역할 : discountPolicy

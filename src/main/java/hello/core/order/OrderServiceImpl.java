@@ -5,6 +5,7 @@ import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import hello.core.member.MemberService;
 import hello.core.member.MemoryMemberRepositroy;
 
 public class OrderServiceImpl implements OrderService {
@@ -28,5 +29,10 @@ public class OrderServiceImpl implements OrderService {
 
 
         return new Order(memberId, itemName, itemPrice, discountPrice );      //4. 주문 결과 반환
+    }
+
+    // 테스트용
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
     }
 }
