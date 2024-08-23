@@ -496,3 +496,15 @@ public class MemberServiceImpl implements  MemberService{
   - InitMethodName: 빈을 생성하고, 의존관계를 적용한 뒤에 호출되는 초기화 메서드 명
   - DestroyMethodName: 빈의 생명주기가 끝나서 제거하기 직전에 호출되는 메서드 명
   - Constructor arguments, Properties: 의존관계 주입에서 사용한다. (자바 설정 처럼 팩토리 역할의 빈을 사용하면 없음)  
+
+# 5. 싱글톤 컨테이너
+
+## 5.1 웹 애플리케이션과 싱글톤  
+
+- 웹 애플리케이션은 보통 고객이 동시에 요청을 한다.
+
+  ![20240823174659](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823174659.png)
+
+- AppConfig 는 요청할 때마다 객체를 새로 생성한다. 
+- 메모리 낭비가 심하다
+- 싱글톤으로 만들고 공유해서 사용하면 된다.
