@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 // 나중에 기능이 변경시 AppConfig 만 변경하면 된다.
+// Factory Method 방식
 @Configuration
 public class AppConfig {
 

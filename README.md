@@ -472,3 +472,27 @@ public class MemberServiceImpl implements  MemberService{
    - XML 을 사용하면 컴파일 없이 빈 설정 정보를 변경할 수 있는 장점이 있다.
 
 - xml 방식은 최근에 잘 사용하지 않는다.
+
+## 4.8 스프링 빈 설정 메타 정보 - BeanDefinition
+
+> 스프링이 다양한 설정 형식을 지원할 수 있는 이유는 ?
+
+- `BeanDefinition` 이라는 추상화가 존재
+- 설정 메타정보라고 한다.
+- @Bean 당 각각 하나씩 메타 정보가 생성된다.
+
+![20240823161957](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823161957.png)
+
+- 좀 더 깊이...
+
+  ![20240823162212](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823162212.png)
+
+- BeanDefinition 정보
+  - BeanClassName: 생성할 빈의 클래스 명(자바 설정 처럼 팩토리 역할의 빈을 사용하면 없음)
+  - factoryBeanName: 팩토리 역할의 빈을 사용할 경우 이름, 예) appConfig
+  - factoryMethodName: 빈을 생성할 팩토리 메서드 지정, 예) memberService
+    Scope: 싱글톤(기본값)
+  - lazyInit: 스프링 컨테이너를 생성할 때 빈을 생성하는 것이 아니라, 실제 빈을 사용할 때 까지 최대한 생성을 지연 처리 하는지 여부
+  - InitMethodName: 빈을 생성하고, 의존관계를 적용한 뒤에 호출되는 초기화 메서드 명
+  - DestroyMethodName: 빈의 생명주기가 끝나서 제거하기 직전에 호출되는 메서드 명
+  - Constructor arguments, Properties: 의존관계 주입에서 사용한다. (자바 설정 처럼 팩토리 역할의 빈을 사용하면 없음)  
