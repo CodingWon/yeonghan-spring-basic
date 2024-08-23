@@ -461,3 +461,14 @@ public class MemberServiceImpl implements  MemberService{
       - 파일, 클래스, 외부 등에서 외부 리소스를 편리하게 조회
 
   ![20240823155816](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823155816.png)
+
+## 4.7 다양한 설정 형식 지원 - 자바 코드, XML
+
+![20240823160322](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240823160322.png)
+
+1. 애노테이션 기반 자바 코드 설정 사용
+
+2. XML 설정 사용
+   - XML 을 사용하면 컴파일 없이 빈 설정 정보를 변경할 수 있는 장점이 있다.
+
+- xml 방식은 최근에 잘 사용하지 않는다.
