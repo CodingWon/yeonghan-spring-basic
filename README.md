@@ -107,18 +107,18 @@
 >
 >   ```
 >    import java.util.concurrent.ConcurrentHashMap;
->            
+>              
 >    public class Main {
 >        public static void main(String[] args) {
 >               ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 >               map.put("A", 1);
 >               map.put("B", 2);
 >               map.put("C", 3);
->           
+>             
 >               System.out.println("Map size: " + map.size());
 >               int valueA = map.get("A");
 >               System.out.println("Value of A: " + valueA);
->           
+>             
 >               map.remove("B");
 >               System.out.println("Map size: " + map.size());
 >           }
@@ -417,3 +417,13 @@ public class MemberServiceImpl implements  MemberService{
 ## 4.2 컨테이너에 등록된 모든 빈 조회
 
 ## 4.3 스프링 빈 조회 -기본
+
+## 4.4 스프링 빈 조회 - 동일한 타입이 둘이상
+
+1. 타입으로 조회시 같은 타입이 둘 이상 있으면, 중복 오류가 발생한다.
+
+2. 타입으로 조회시 같은 타입이 둘 이상 있으면, 빈 이름을 지정하면 된다.
+
+3. 특정 타입을 모두 조회하기
+
+   
