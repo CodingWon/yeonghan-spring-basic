@@ -590,4 +590,27 @@ public class MemberServiceImpl implements  MemberService{
   @Configuration 을 사용하지 않으면 싱글톤을 유지할 수 없다.
   ```
 
-  
+# 6. 컴포넌트 스캔
+
+## 6.1 컴포넌트 스캔과 의존관계 자동 주입 시작하기
+
+- `@Autowired ` 와 `@Component`
+
+  - `@Component` 애노테이션이 붙은 클래스를 스캔해서 스프링 빈으로 등록한다  
+
+  - `@Autowired` 는 의존관계를 자동으로 주입해준다.  
+
+  - 스프링 등록 및 자동 의존관계 주입  과정
+
+    1. `@Component` 
+
+       - `@ComponentScan` 은 `@Component` 가 붙은 모든 클래스를 스프링 빈으로 등록한다.  
+       - 스프링 빈의 기본 이름은 클래스명을 사용하되 맨 앞글자만 소문자를 사용한다 
+
+       ![20240824145118](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240824145118.png)
+
+    2. `@Autowired `의존관계 자동 주입
+
+       - 생성자에 `@Autowired` 를 지정하면, 스프링 컨테이너가 자동으로 해당 스프링 빈을 찾아서 주입  
+
+       ![20240824145332](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240824145332.png)

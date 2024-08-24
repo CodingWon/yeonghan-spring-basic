@@ -1,5 +1,8 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /*
  *  회원 도메인 설계의 문제점
  *   - 다른 저장소로 변경할 때 OCP 원칙을 잘 준수 할까?
@@ -8,11 +11,12 @@ package hello.core.member;
  *
  *   - 현재 추상화에도 의존하고 구체화 에도 의존하고 있다.
  * */
-
+@Component
 public class MemberServiceImpl implements  MemberService{
     // DIP 를 지키고 있다
     private final MemberRepository memberRepository ;
 
+    @Autowired  // 의존관계 등로 : memberRepository 를 찾아서 스프링이 주입시켜준다. , ac.getBean(MemberRepository.class);
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

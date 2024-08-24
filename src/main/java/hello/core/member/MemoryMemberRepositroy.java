@@ -1,9 +1,12 @@
 package hello.core.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class MemoryMemberRepositroy implements MemberRepository{
     /*
         동시성 이슈(설명참조)로 인해 실무에서는 cuncurrent HashMap 을 사용한다.
