@@ -107,18 +107,18 @@
 >
 >   ```
 >    import java.util.concurrent.ConcurrentHashMap;
->              
+>                
 >    public class Main {
 >        public static void main(String[] args) {
 >               ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 >               map.put("A", 1);
 >               map.put("B", 2);
 >               map.put("C", 3);
->             
+>               
 >               System.out.println("Map size: " + map.size());
 >               int valueA = map.get("A");
 >               System.out.println("Value of A: " + valueA);
->             
+>               
 >               map.remove("B");
 >               System.out.println("Map size: " + map.size());
 >           }
@@ -559,5 +559,35 @@ public class MemberServiceImpl implements  MemberService{
   1. 스프링 컨테이너가 스프링 빈에 등록하기 위해 @Bean이 붙어있는 `memberRepository()` 호출
   2. memberService() 로직에서 `memberRepository()` 호출
   3. orderService() 로직에서 `memberRepository()` 호출  
+
+
+## 5.6 @Configuration과 바이트코드 조작의 마법
+
+```java
+   @Test
+    void configurationDeep(){
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        System.out.println(bean.getClass());
+        /*
+        class hello.core.AppConfig$$SpringCGLIB$$0
+        * */
+    }
+```
+
+- 스프링이 CGLIB 라는 바이트 코드 조작 라이브러리를 사용
+
+- AppConfig 클래스를 상속받은 임의이 다른 클래스를 만들고 그 클래스를 스프링 빈으로 등록한것.
+
+  ![20240824142005](https://raw.githubusercontent.com/CodingWon/images/master/imgs/20240824142005.png)
+
+- 이미 스프링 빈에 존재하면 존재하는 빈을 반환하고,
+
+- 스프링 빈이 없으면 생성해서 스프링 빈으로 등록하고 반환한다.
+
+  ```
+  @Configuration 을 사용하지 않으면 싱글톤을 유지할 수 없다.
+  ```
 
   

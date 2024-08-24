@@ -31,4 +31,15 @@ public class ConfigurationSigletonTest {
 
 
     }
+
+    @Test
+    void configurationDeep(){
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        System.out.println(bean.getClass());
+        /*
+        class hello.core.AppConfig$$SpringCGLIB$$0
+        * */
+    }
 }
